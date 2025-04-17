@@ -16,7 +16,7 @@ int main() {
     std::vector<std::unique_ptr<Ball>> balls;
     
     balls.emplace_back(std::make_unique<Ball>(TDT4102::Color::blue,   500, -500));
-    balls.emplace_back(std::make_unique<Ball>(TDT4102::Color::red,    0,  300));
+    balls.emplace_back(std::make_unique<Ball>(TDT4102::Color::red,    200,  300));
     balls.emplace_back(std::make_unique<Ball>(TDT4102::Color::forest_green, -100,  700));
     
     //Animation
