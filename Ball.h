@@ -18,4 +18,5 @@ struct Ball : Entity {
     //wall bounces
     void bounce_x();
     void bounce_y();
+    void ball_collision(Ball& ball);
 };
