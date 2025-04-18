@@ -1,5 +1,6 @@
 #include "std_lib_facilities.h"
 #include "Ball.h"
+#include "widgets/Button.h"
 
 int main() {
     //Window constants
@@ -18,6 +19,16 @@ int main() {
     balls.emplace_back(TDT4102::Color::red,    200,  300);
     balls.emplace_back(TDT4102::Color::forest_green, -100,  700);
     balls.emplace_back(TDT4102::Color::black, 200, 100, 100, 100, 40);
+
+    //Button
+    TDT4102::Button button {{1000, 10}, 100, 50, "Energize"};
+    button.setCallback([&balls]() {
+        for (Ball& b : balls) {
+            b.vel_x += b.vel_x * 1000 / b.mass;
+            b.vel_y += b.vel_y * 1000 / b.mass;
+        }
+    });
+    window.add(button);
     
     //Animation
     while (!window.should_close()) {
