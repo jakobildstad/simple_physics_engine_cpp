@@ -5,6 +5,7 @@
 struct Ball : Entity {
     TDT4102::Point centre;
     const int radius = 20;
+    const double mass_density = 1;
 
     //walls
     double right_wall() const { return pos_x + radius + vel_x * dt; }
@@ -18,5 +19,5 @@ struct Ball : Entity {
     //wall bounces
     void bounce_x();
     void bounce_y();
-    void ball_collision(Ball& ball);
+    void ball_collision(Ball& other);
 };
