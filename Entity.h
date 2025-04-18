@@ -4,9 +4,10 @@
 struct Entity {
     double g = 500; //gravity strength
     const double e = 0.95; //coeffisient of restitution: sqrt of how much kinetic energy is kept each bounce (0-1)
-    const double mass = 10;
     const double dt = 1.0/60.0; //animation is 60 fps
+
     TDT4102::Color color;
+    double mass;
 
     double vel_x = 0;
     double vel_y = 0;

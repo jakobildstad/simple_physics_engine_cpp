@@ -5,7 +5,6 @@
 struct Ball : Entity {
     TDT4102::Point centre;
     const int radius = 20;
-    const double mass_density = 1;
 
     //walls
     double right_wall() const { return pos_x + radius + vel_x * dt; }
@@ -14,7 +13,7 @@ struct Ball : Entity {
     double bottom_wall() const { return pos_y + radius + vel_y * dt; }
 
     //Constructor
-    Ball(TDT4102::Color color, double vel_x = 0, double vel_y = 0, double pos_x = 550, double pos_y = 200, double mass = 10);
+    Ball(TDT4102::Color color, double vel_x = 0, double vel_y = 0, double pos_x = 550, double pos_y = 200, int radius = 20);
 
     //wall bounces
     void bounce_x();

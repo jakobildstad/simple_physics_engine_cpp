@@ -1,8 +1,8 @@
 #include "Ball.h"
 #include <iostream>
 
-Ball::Ball(TDT4102::Color color, double vel_x, double vel_y, double pos_x, double pos_y, double mass) 
-: Entity(color, vel_x, vel_y, pos_x, pos_y, mass), centre{int(std::round(pos_x)), int(std::round(pos_y))} {}
+Ball::Ball(TDT4102::Color color, double vel_x, double vel_y, double pos_x, double pos_y, int radius) 
+: Entity(color, vel_x, vel_y, pos_x, pos_y, radius*radius*3.14159), radius{radius}, centre{int(std::round(pos_x)), int(std::round(pos_y))} {}
 
 void Ball::bounce_x() {
     vel_x = - vel_x * e;
@@ -26,11 +26,10 @@ void Ball::ball_collision(Ball& other) {
     double min_dist = radius + other.radius;
     if (dist >= min_dist) return;
     //else
-    std::cout << "collision" << std::endl;
 
-    
     //little bit of physics 
     //n is the collision normal: p2 - p1 / ||p2 - p1|| where p is the position vectors (math)
+    if (dist == 0) return;
     double n_x = dx / dist;
     double n_y = dy / dist;
     
@@ -49,18 +48,4 @@ void Ball::ball_collision(Ball& other) {
     vel_y += j / mass * n_y;
     other.vel_x -= j / other.mass * n_x;
     other.vel_y -= j / other.mass * n_y;
-
-    /*
-    double penetration = min_dist - dist;          // > 0 if still overlapping
-    if (penetration > 0.0)
-    {
-        double corr = penetration / inverse_masses;   // shared shift
-
-        pos_x      -= corr / mass       * n_x;
-        pos_y      -= corr / mass       * n_y;
-        other.pos_x += corr / other.mass * n_x;
-        other.pos_y += corr / other.mass * n_y;
-    }
-    */
-
 }

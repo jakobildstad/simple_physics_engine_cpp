@@ -17,6 +17,7 @@ int main() {
     balls.emplace_back(TDT4102::Color::blue,   500, -500);
     balls.emplace_back(TDT4102::Color::red,    200,  300);
     balls.emplace_back(TDT4102::Color::forest_green, -100,  700);
+    balls.emplace_back(TDT4102::Color::black, 200, 100, 100, 100, 40);
     
     //Animation
     while (!window.should_close()) {
